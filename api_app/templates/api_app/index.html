@@ -3,7 +3,7 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
-  <h2>Faça uma pergunta</h2>
+  <h2>Insira o texto base para gerar as questoes:</h2>
   <form method="post">
     {% csrf_token %}
     <textarea name="prompt" rows="4" cols="50"></textarea>
