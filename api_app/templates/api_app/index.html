@@ -1,18 +1,18 @@
-<!-- api_app/templates/api_app/index.html -->
-
 {% extends 'base_generic.html' %}
 
 {% block content %}
-  <h2>Insira o texto base para gerar as questoes:</h2>
-  <form method="post">
-    {% csrf_token %}
-    <textarea name="prompt" rows="4" cols="50"></textarea>
-    <br>
-    <button type="submit">Enviar</button>
-  </form>
+    <h1>PerguntAI</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="prompt">Pergunta:</label>
+            <textarea id="prompt" name="prompt" class="form-control" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
 
-  {% if result %}
-    <h3>Resposta:</h3>
-    <p>{{ result }}</p>
-  {% endif %}
+    {% if response_text %}
+        <h2>Resposta:</h2>
+        <p>{{ response_text }}</p>
+    {% endif %}
 {% endblock %}

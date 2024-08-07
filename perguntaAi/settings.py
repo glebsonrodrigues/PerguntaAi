@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+
+# Autenticaçaõ
+AUTH_USER_MODEL = 'api_app.User'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -77,7 +81,7 @@ WSGI_APPLICATION = 'perguntaAi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Usando o conector MySQL
-        'NAME': 'sakila',  # Substitua pelo nome do seu banco de dados
+        'NAME': 'perguntaai',  # Substitua pelo nome do seu banco de dados
         'USER': 'root',        # Substitua pelo seu usuário MySQL
         'PASSWORD': 'grtech',      # Substitua pela sua senha MySQL
         'HOST': 'localhost',      # Ou o endereço IP do servidor MySQL
