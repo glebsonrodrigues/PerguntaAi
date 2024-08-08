@@ -16,7 +16,9 @@
     {% if user.is_authenticated %}
     <!-- Topbar Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <img src="{% static 'img\logo.png' %}" width="160" height="39">
+        </nav>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <!-- Alerts -->
@@ -96,6 +98,7 @@
             </ul>
         </div>
     </nav>
+    
     {% else %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <img src="{% static 'img\logo.png' %}" width="160" height="39">
