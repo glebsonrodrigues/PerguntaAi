@@ -8,7 +8,7 @@
     <!-- Link do Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Estilos personalizados -->
-    <link href="{% static 'css\styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
@@ -16,10 +16,14 @@
     {% if user.is_authenticated %}
     <!-- Topbar Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <img src="{% static 'img\logo.png' %}" width="160" height="39">
-        </nav>
-        <div class="collapse navbar-collapse">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'img/logo.png' %}" width="160" height="39" alt="PerguntAI">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <!-- Alerts -->
                 <li class="nav-item dropdown no-arrow mx-1">
@@ -39,7 +43,7 @@
                             </div>
                             <div>
                                 <div class="small text-gray-500">09 de agosto de 2024</div>
-                                <span class="font-weight-bold">Aniversário de Glêbson não esqueçam ee enviar o litro de uisque!</span>
+                                <span class="font-weight-bold">Aniversário de Glêbson, não esqueçam de enviar o litro de uísque!</span>
                             </div>
                         </a>
                         <!-- More alerts here -->
@@ -61,7 +65,7 @@
                                 <div class="status-indicator bg-success"></div>
                             </div>
                             <div class="font-weight-bold">
-                                <div class="text-truncate">Olá o prazo de entrega do projeto esta terminando vamos fazer isto funcioanar de verdade.</div>
+                                <div class="text-truncate">Olá, o prazo de entrega do projeto está terminando, vamos fazer isso funcionar de verdade.</div>
                                 <div class="small text-gray-500">Gerencia do Cesar School · 58m</div>
                             </div>
                         </a>
@@ -94,14 +98,15 @@
                         </a>
                     </div>
                 </li>
-               
             </ul>
         </div>
     </nav>
     
     {% else %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <img src="{% static 'img\logo.png' %}" width="160" height="39">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'img/logo.png' %}" width="160" height="39" alt="PerguntAI">
+        </a>
     </nav>
     {% endif %}
     <div class="container mt-4">

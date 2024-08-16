@@ -3,14 +3,14 @@
 
 {% block content %}
 <div class="container mt-4">
-    <div class="row">
+    <div class="row justify-content-center">
         <!-- Coluna da Imagem -->
-        <div class="col-md-6 d-flex justify-content-center align-items-center">
-            <img src="{% static 'img/Professora.png' %}" width="500" height="779" alt="Imagem de Login">
+        <div class="col-lg-6 col-md-8 d-none d-md-flex justify-content-center align-items-center">
+            <img src="{% static 'img/Professora.png' %}" class="img-fluid" alt="Imagem de Login">
         </div>
         <!-- Coluna do Formulário -->
-        <div class="col-md-6 d-flex justify-content-center align-items-center">
-            <div class="border-login">
+        <div class="col-lg-6 col-md-8 col-sm-12 d-flex justify-content-center align-items-center">
+            <div class="border-login p-4">
                 <h2>Login</h2>
                 <form method="post">
                     {% csrf_token %}
@@ -22,13 +22,13 @@
                         <label for="password">Senha:</label>
                         <input id="password" name="password" type="password" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
+                    <button type="submit" class="btn btn-custom btn-block">Entrar</button>
                 </form>
             </div>
         </div>
     </div>
     {% if error %}
-        <div class="alert alert-danger mt-2">{{ error }}</div>
+        <div class="alert alert-danger mt-2 text-center">{{ error }}</div>
     {% endif %}
 </div>
 {% endblock %}

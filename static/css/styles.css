@@ -25,4 +25,15 @@ body {
 	/* Para exibir nos outros navegadores como Chrome, safari, opera*/
 	-webkit-border-radius: 35px;
     padding: 30px;
-	}
+}
+
+.btn-custom {
+    background-color: #FF6002 !important;
+    border-color: #FF6002 !important;
+    color: #fff !important; 
+}
+
+.btn-custom:hover {
+    background-color: #e65500 !important;
+    border-color: #e65500 !important;
+}
