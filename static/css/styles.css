@@ -1,6 +1,46 @@
 /* Estilo para a tela de login */
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     background-color: #FF6002;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.resetPassword {
+	text-align: right;
+	margin-bottom: 20px;
+}
+
+.resetPassword a {
+	text-decoration: none;
+}
+
+.footer {
+	background-color: white;
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+    /* Defina a largura conforme necessário */
+}
+
+.register2 {
+    margin-left: initial;
+}
+
+.register label {
+	color: gray;
+}
+
+.register a{
+	text-decoration: none;
+	color: #FF6002;
 }
 
 
@@ -11,11 +51,14 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+
+.img-fluid {
+	max-width: 88.5%;
+}
+
 .border-login{
 	/*definimos a largura do box*/
-	width:539px;
-	/* definimos a altura do box */
-	height:604px;
+	width: 85%;
 	/* definimos a cor de fundo do box */
 	background-color:#FFFFFF;
 	/* definimos o quão arredondado irá ficar nosso box */
@@ -24,7 +67,14 @@ body {
 	-moz-border-radius: 35px;
 	/* Para exibir nos outros navegadores como Chrome, safari, opera*/
 	-webkit-border-radius: 35px;
-    padding: 30px;
+	padding-top: 50px;
+	padding-left: 30px;
+    padding-right: 30px;
+	padding-bottom: 50px;
+}
+
+.border-login h1 {
+	text-shadow: black;
 }
 
 .btn-custom {
