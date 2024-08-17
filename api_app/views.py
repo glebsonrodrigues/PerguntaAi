@@ -25,7 +25,7 @@ def index(request):
             config["prompt"] = prompt
             
             # Enviar solicitação para a API
-            response = requests.post('http://192.168.0.192:22500/v1/completions', json=config)
+            response = requests.post('http://187.103.205.100:22500/v1/completions', json=config)
             response_data = response.json()
             
             # Processar a resposta da API
@@ -43,7 +43,7 @@ def register_view(request):
             return redirect('/')
     else:
         form = CustomUserCreationForm()  # Use o nome correto aqui
-    return render(request, 'api_app/register.html', {'form': form})
+    return render(request, 'api_app/pages/register/register.html', {'form': form})
 
 # Página de login
 def login_view(request):
@@ -55,7 +55,7 @@ def login_view(request):
             return redirect('/')
     else:
         form = AuthenticationForm()
-    return render(request, 'api_app/login.html', {'form': form})
+    return render(request, 'api_app/pages/login/login.html', {'form': form})
 
 # Função de logout
 def logout_view(request):
