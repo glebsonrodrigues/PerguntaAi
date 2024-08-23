@@ -2,16 +2,15 @@
 
 {% block content %}
     <div class="row justify-content-center">
-        <h2>Cadastro de Usuário</h2>
+        
     </div>
     <div class="row justify-content-center">
-        <form method="post">
-            {% csrf_token %}
+        <h2 style="color: aliceblue;">Cadastro de Usuário</h2>
+                    {% csrf_token %}
             <div class="border-login">
                 {{ form.as_p }}
                 <button type="submit" class="btn btn-custom btn-lg btn-block">Cadastrar</button>
             </div>
-        </form>    
     </div>
     
 {% endblock %}

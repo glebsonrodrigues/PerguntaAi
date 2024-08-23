@@ -1,24 +1,22 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import User
-#LANGUAGE_CODE = 'pt-br'
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ('username', 'email', 'address', 'phone', 'password1', 'password2')
         labels = {
-            'username': 'Nome de Usuário alterado:',
-            'email': 'E-mail alterado:',
-            'address': 'Endereço alterado:',
-            'phone': 'Telefone alterado :',
-            'password1': 'Senha Alterada:',
-            'password2': 'Confirmação de Senha: Alterada',
+            'username': 'Nome de Usuário:',
+            'email': 'E-mail:',
+            'address': 'Endereço:',
+            'phone': 'Telefone:',
+            'password1': 'Senha:',
+            'password2': 'Confirmação de Senha:',
         }
         help_texts = {
             'username': "",
         }
-
         error_messages = {
             'username': {
                 'required': 'Por favor, insira um nome de usuário.',
@@ -42,9 +40,9 @@ class CustomUserCreationForm(UserCreationForm):
         }
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs['class'] = 'form-control'  # Adiciona a classe form-control do Bootstrap
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
@@ -52,6 +50,6 @@ class CustomUserChangeForm(UserChangeForm):
         fields = ('username', 'email', 'address', 'phone')
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(CustomUserChangeForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs['class'] = 'form-control'  # Adiciona a classe form-control do Bootstrap
