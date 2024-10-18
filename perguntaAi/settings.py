@@ -131,7 +131,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+LANGUAGE_CODE = 'pt-br'
 LOGIN_URL = 'login'  # Define a URL de login
 LOGIN_REDIRECT_URL = '/'  # Define para onde o usuário será redirecionado após o login
 LOGOUT_REDIRECT_URL = '/'
