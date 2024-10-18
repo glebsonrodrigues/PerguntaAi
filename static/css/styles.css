@@ -87,3 +87,7 @@ body {
     background-color: #e65500 !important;
     border-color: #e65500 !important;
 }
+
+.espacamento {
+	margin-bottom: 20px;
+}

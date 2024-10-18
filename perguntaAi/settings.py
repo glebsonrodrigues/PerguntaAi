@@ -81,9 +81,9 @@ WSGI_APPLICATION = 'perguntaAi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Usando o conector MySQL
-        'NAME': 'perguntaai',  # Substitua pelo nome do seu banco de dados
-        'USER': 'root',        # Substitua pelo seu usuário MySQL
-        'PASSWORD': 'grtech',      # Substitua pela sua senha MySQL
+        'NAME': 'cesar',  # Substitua pelo nome do seu banco de dados
+        'USER': 'emerson',        # Substitua pelo seu usuário MySQL
+        'PASSWORD': 'Emerson1809@',      # Substitua pela sua senha MySQL
         'HOST': 'localhost',      # Ou o endereço IP do servidor MySQL
         'PORT': '3306',           # Porta padrão do MySQL
     }

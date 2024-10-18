@@ -1,18 +1,40 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
-    <h1>PerguntAI</h1>
-    <form method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="prompt">Pergunta:</label>
-            <textarea id="prompt" name="prompt" class="form-control" rows="4"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </form>
+    <div class="chat-container" style="max-width: 1000px; margin: auto;"> 
+        <!-- Chat box container -->
+        <div class="chat-box" id="chat-box" style="height: 70vh; border-radius: 30px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin-bottom: 60px; background-color: #f9f9f9;">
 
-    {% if response_text %}
-        <h2>Resposta:</h2>
-        <p>{{ response_text }}</p>
-    {% endif %}
+            {% for message in chat_history %}
+                {% if message.user %}
+                    <div class="user-message" style="text-align: right; margin-bottom: 10px;">
+                        <strong>Você:</strong>
+                        <div style="display: inline-block; background-color: #007bff; color: white; padding: 10px; border-radius: 10px; max-width: 70%;"> <!-- Reduzi para 70% para maior largura -->
+                            {{ message.text }}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="bot-message" style="text-align: left; margin-bottom: 10px;">
+                        <strong>Bot:</strong>
+                        <div style="display: inline-block; background-color: #f1f1f1; padding: 10px; border-radius: 10px; max-width: 70%;"> <!-- Também ajustei para 70% -->
+                            {{ message.text }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <form method="post" style="margin-bottom: 20px; border-radius: 10px; position: fixed; bottom: 0; width: 100%; max-width: 1000px; background-color: #fff; padding: 10px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1);"> <!-- Aumentei o max-width -->
+            {% csrf_token %}
+            <div class="input-group" style="display: flex; align-items: center;">
+                <textarea id="prompt" name="prompt" class="form-control" rows="1" placeholder="Digite sua mensagem..." style="resize: none; flex: 1;"></textarea>
+                <button type="submit" class="btn btn-primary" style="background-color: #e65500; margin-left: 20px; text-align: center; padding-left: 80px; padding-right: 80px;">Enviar</button> <!-- Mantido o espaçamento -->
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chat-box');
+        chatBox.scrollTop = chatBox.scrollHeight;
+    </script>
 {% endblock %}
