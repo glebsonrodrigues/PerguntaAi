@@ -1,40 +1,74 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
-    <div class="chat-container" style="max-width: 1000px; margin: auto;"> 
-        <!-- Chat box container -->
-        <div class="chat-box" id="chat-box" style="height: 70vh; border-radius: 30px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin-bottom: 60px; background-color: #f9f9f9;">
-
-            {% for message in chat_history %}
-                {% if message.user %}
-                    <div class="user-message" style="text-align: right; margin-bottom: 10px;">
-                        <strong>Você:</strong>
-                        <div style="display: inline-block; background-color: #007bff; color: white; padding: 10px; border-radius: 10px; max-width: 70%;"> <!-- Reduzi para 70% para maior largura -->
-                            {{ message.text }}
-                        </div>
+<div class="chat-container" style="max-width: 1000px; margin: auto; position: relative;"> 
+    <!-- Chat box container -->
+    <div class="chat-box" id="chat-box" style="height: 80vh; border-radius: 30px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin-bottom: 50px; background-color: #f9f9f9;">
+        {% for message in chat_history %}
+            {% if message.user %}
+                <div class="user-message" style="text-align: right; margin-bottom: 10px;">
+                    <strong>Você:</strong>
+                    <div style="display: inline-block; background-color: #FF6002; color: white; padding: 10px; border-radius: 10px; max-width: 70%; word-wrap: break-word;">
+                        {{ message.text }}
                     </div>
-                {% else %}
-                    <div class="bot-message" style="text-align: left; margin-bottom: 10px;">
-                        <strong>Bot:</strong>
-                        <div style="display: inline-block; background-color: #f1f1f1; padding: 10px; border-radius: 10px; max-width: 70%;"> <!-- Também ajustei para 70% -->
-                            {{ message.text }}
-                        </div>
+                </div>
+            {% else %}
+                <div class="bot-message" style="text-align: left; margin-bottom: 10px; padding-bottom: 60px;">
+                    <strong>PerguntaAI:</strong>
+                    <div style="display: inline-block; background-color: #e65500; color: #FFFF; padding: 10px; border-radius: 10px; max-width: 70%; word-wrap: break-word;">
+                        {{ message.text }}
                     </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-
-        <form method="post" style="margin-bottom: 20px; border-radius: 10px; position: fixed; bottom: 0; width: 100%; max-width: 1000px; background-color: #fff; padding: 10px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1);"> <!-- Aumentei o max-width -->
-            {% csrf_token %}
-            <div class="input-group" style="display: flex; align-items: center;">
-                <textarea id="prompt" name="prompt" class="form-control" rows="1" placeholder="Digite sua mensagem..." style="resize: none; flex: 1;"></textarea>
-                <button type="submit" class="btn btn-primary" style="background-color: #e65500; margin-left: 20px; text-align: center; padding-left: 80px; padding-right: 80px;">Enviar</button> <!-- Mantido o espaçamento -->
-            </div>
-        </form>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
 
-    <script>
+    <!-- Chat Input Form flutuante dentro do chat-box -->
+    <form method="post" style="position: absolute; bottom: 10px; width: 94%; left: 3%; right: 3%; background-color: #FF6002; padding: 3px; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        {% csrf_token %}
+        <div class="input-group" style="display: flex; align-items: center;">
+            <textarea id="prompt" name="prompt" style="background-color: #FF6002; resize: none; flex: 1; height: 40px; border-radius: 10px; border: none; color: white; padding: 5px; padding-left: 10px;" placeholder="Digite sua mensagem..."></textarea>
+            <button type="submit" style="background-color: transparent; border: none; color: #FFFF; cursor: pointer; margin-left: 10px; padding: 0;" class="send-button">
+                <img src="../../../static/img/seta-perguntaai-branco.svg" alt="Enviar" style="width: 24px; height: 24px; margin-right: 20px;">
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Estilização do placeholder */
+    #prompt::placeholder {
+        color: white; /* Cor do texto do placeholder */
+        opacity: 0.7; /* Opacidade do placeholder (opcional) */
+    }
+
+    /* Removendo borda e outline do textarea ao focar */
+    #prompt {
+        border: none; /* Remove a borda */
+        outline: none; /* Remove a borda de foco */
+    }
+    
+    /* Para evitar qualquer borda em foco */
+    #prompt:focus {
+        box-shadow: none; /* Remove qualquer sombra ao focar */
+    }
+
+    /* Removendo box shadow do botão ao focar */
+    .send-button:focus {
+        outline: none; /* Remove o contorno padrão */
+        box-shadow: none; /* Remove qualquer sombra */
+    }
+
+    /* Opções adicionais para melhorar a aparência do botão */
+    .send-button:hover {
+        opacity: 0.8; /* Um leve efeito ao passar o mouse */
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
         const chatBox = document.getElementById('chat-box');
-        chatBox.scrollTop = chatBox.scrollHeight;
-    </script>
+        chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+    });
+</script>
 {% endblock %}
